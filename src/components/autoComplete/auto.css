@@ -1,0 +1,25 @@
+.container {
+  margin: auto;
+}
+
+.input {
+  padding: 10px;
+  width: 300px;
+  margin: auto;
+  display: block;
+  margin-top: 1rem;
+}
+
+.option {
+  padding: 10px;
+  border: 1px solid lightgrey;
+  width: 300px;
+  text-align: center;
+  cursor: pointer;
+  margin: auto;
+  text-align: left;
+}
+
+.option.active {
+  background-color: aliceblue;
+}

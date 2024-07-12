@@ -1,0 +1,74 @@
+.toast{
+    display:'flex';
+    text-align: center;
+    justify-content: space-between;
+    padding:10px;
+    border:1px solid grey;
+    width:250px;
+    color: white;
+  transition: .5s ease;
+  overflow: hidden;
+}
+
+.message{
+    margin-left: 10px ;
+}
+
+.toast.success{
+    background-color: rgb(12, 233, 148);
+}
+
+.toast.warning{
+    background-color: rgb(255, 174, 0);
+}
+
+.toast.info{
+    background-color: rgba(8, 129, 241, 0.815);
+}
+
+.toast.error{
+    background-color: red;
+}
+
+.closeIcon{
+    text-align: end;
+    cursor:pointer;
+    padding:10px;
+}
+
+.top-left{
+    position:absolute;
+    top:20px;
+    left: 20px;
+}
+
+.bottom-left{
+    position:absolute;
+    bottom:50px;
+    left: 20px;
+      /* transition: 3s; */
+      transition: transform .5s ease; 
+      transition-delay: 5s;
+    /* bottom: 0; */
+}
+
+.top-right{
+    position:absolute;
+    top:20px;
+    right: 20px;
+}
+
+.bottom-right{
+    position:absolute;
+    bottom:50px;
+    right: 20px;
+}
+
+.positionSelect{
+    margin-top: 10px;
+    padding:5px
+}
+
+.selectOption{
+    padding:13px
+}

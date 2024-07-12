@@ -1,0 +1,28 @@
+.gridItem{
+    padding: 10px;
+     margin: 10px;
+      height: 100%
+}
+
+.gridContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.pagination{
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.pagination-item{
+    padding: 5px 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.pagination-item-selected{
+    padding: 5px 10px;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: aquamarine;
+}
