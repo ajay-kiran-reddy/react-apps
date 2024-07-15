@@ -6,6 +6,7 @@ import Pagination from "./components/pagination/Pagination";
 import ProgressBar from "./components/progressBar/ProgressBar";
 import AutoCompleteLandingPage from "./components/autoComplete/AutoCompleteLandingPage";
 import Stopwatch from "./components/stopwatch/Stopwatch";
+import FileExplorer from "./components/fileExplorer/FileExplorer";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/stopwatch",
     element: <Stopwatch />,
+  },
+  {
+    path: "/fileExplorer",
+    element: <FileExplorer />,
   },
 ]);
 

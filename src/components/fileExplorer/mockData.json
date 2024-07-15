@@ -1,0 +1,70 @@
+{
+  "id": 1,
+  "name": "src",
+  "isFolder": true,
+  "children": [
+    {
+      "id": 2,
+      "name": "lib",
+      "isFolder": true,
+      "children": []
+    },
+    {
+      "id": 3,
+      "name": "projects",
+      "isFolder": true,
+      "children": [
+        {
+          "id": 4,
+          "name": "react",
+          "isFolder": true,
+          "children": [
+            {
+              "id": 10,
+              "name": "Snack Bar",
+              "isFolder": false
+            },
+            {
+              "id": 11,
+              "name": "Progress Bar",
+              "isFolder": false
+            },
+            {
+              "id": 12,
+              "name": "Comment Box",
+              "isFolder": false
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "angular",
+          "isFolder": true,
+          "children": []
+        },
+        {
+          "id": 6,
+          "name": "view",
+          "isFolder": true,
+          "children": [
+            {
+              "id": 7,
+              "name": "StopWatch",
+              "isFolder": false
+            },
+            {
+              "id": 8,
+              "name": "Auto Complete",
+              "isFolder": false
+            },
+            {
+              "id": 9,
+              "name": "Pagination",
+              "isFolder": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

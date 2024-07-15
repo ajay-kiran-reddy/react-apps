@@ -33,7 +33,6 @@ const Home = () => {
             }
           />
         </div>
-
         <div style={{ marginLeft: "2rem" }}>
           <Card
             title="Progress Bar"
@@ -58,7 +57,6 @@ const Home = () => {
             }
           />
         </div>
-
         <div style={{ marginLeft: "2rem" }}>
           <Card
             title="Stopwatch"
@@ -66,6 +64,19 @@ const Home = () => {
             actions={
               <>
                 <button onClick={() => navigate("/stopwatch")}>Open</button>
+              </>
+            }
+          />
+        </div>
+        <div style={{ marginLeft: "2rem" }}>
+          <Card
+            title="File Explorer"
+            body={
+              <>This card contains functionality related to File explorer</>
+            }
+            actions={
+              <>
+                <button onClick={() => navigate("/fileExplorer")}>Open</button>
               </>
             }
           />

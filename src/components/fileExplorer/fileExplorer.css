@@ -1,0 +1,29 @@
+.fileContainer {
+  /* display: flex; */
+  text-align: left;
+  width: 200px;
+  background-color: aliceblue;
+}
+
+.fileItem {
+  cursor: pointer;
+  padding: 5px 25px;
+}
+
+.folder {
+  display: flex;
+  cursor: pointer;
+  padding: 5px 10px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.newFolder {
+  margin-left: 30px;
+}
+
+.newFolder > input {
+  border: 1px solid green;
+  border-radius: 5px;
+  padding: 3px;
+}
