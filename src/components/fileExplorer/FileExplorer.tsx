@@ -124,18 +124,6 @@ const FileExplorerTree = (props: any) => {
   return (
     <>
       <div className="fileContainer">
-        {showInput && (
-          <div className="newFolder">
-            <input
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={(e) => onAddNode(e)}
-              autoFocus
-              onBlur={handleOnBlur}
-            />
-          </div>
-        )}
-
         {data.isFolder ? (
           <>
             <div
@@ -213,6 +201,18 @@ const FileExplorerTree = (props: any) => {
                 </span>
               </div>
             )}
+          </div>
+        )}
+
+        {showInput && (
+          <div className="newFolder">
+            <input
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={(e) => onAddNode(e)}
+              autoFocus
+              onBlur={handleOnBlur}
+            />
           </div>
         )}
       </div>

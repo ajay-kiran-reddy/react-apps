@@ -23,23 +23,25 @@ const useFileActions = () => {
     }
   };
 
+  let parent: any = [];
+
   const deleteNode = (tree: any, folderId: number, isFolder: boolean) => {
-    console.log(isFolder);
+    console.log(tree, folderId, isFolder, "TREE");
+    console.log(parent, "[parent]");
     if (tree.id === folderId) {
       console.log("record matched");
       if (isFolder) {
         tree.children = [];
       } else {
-        // console.log("inside else");
-        // delete tree.name;
-        // delete tree.id;
-        // delete tree.children;
-        // delete tree.isFolder;
-        console.log(tree, "[TREE inside else]");
+        tree = parent.filter((data: any) => data.id !== folderId);
+        console.log(tree, "[TREE FILTERED]");
+        return tree;
       }
-      return tree;
     } else {
       let filterdData = [];
+      if (tree.isFolder) {
+        parent = tree.children;
+      }
       filterdData = tree?.children?.map((child: any) => {
         return deleteNode(child, folderId, isFolder);
       });
