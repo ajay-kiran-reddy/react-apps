@@ -2,10 +2,10 @@ const useFileActions = () => {
   const insertNode = (
     tree: any,
     name: string,
-    node: any,
+    folderId: any,
     isFolder: boolean
   ) => {
-    if (tree.id === node.id) {
+    if (tree.id === folderId && tree.isFolder) {
       const newItem = {
         id: new Date().getTime(),
         isFolder,
@@ -14,6 +14,12 @@ const useFileActions = () => {
       };
       tree.children.unshift(newItem);
       return tree;
+    } else {
+      let finalData = [];
+      finalData = tree?.children?.map((t: any) => {
+        return insertNode(t, name, folderId, isFolder);
+      });
+      return { ...tree, children: finalData };
     }
   };
 

@@ -2,16 +2,22 @@ import masterData from "./mockData.json";
 import "./fileExplorer.css";
 import { useState } from "react";
 import { FiFolderPlus } from "react-icons/fi";
+
 import { LuFilePlus } from "react-icons/lu";
 import useFileActions from "./useFileActions";
+import { CiFileOn } from "react-icons/ci";
 
 const FileExplorerTree = (props: any) => {
-  const { data } = props;
+  const { data, onAddDataCb } = props;
   const [hide, setHide] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [selectedNode, setSelectedNode]: any = useState({});
   const { insertNode } = useFileActions();
+  const [selectedNode, setSelectedNode]: any = useState({
+    isFolder: false,
+    folderId: null,
+  });
+
   const handleHideFolder = (e: any) => {
     setHide(!hide);
   };
@@ -19,8 +25,9 @@ const FileExplorerTree = (props: any) => {
   const handleNewFolderClick = (e: any, node: any) => {
     e.stopPropagation();
     setShowInput(true);
+    setHide(false);
     setSelectedNode({
-      node,
+      folderId: node.id,
       isFolder: true,
     });
   };
@@ -28,14 +35,42 @@ const FileExplorerTree = (props: any) => {
   const handleNewFileClick = (e: any, node: any) => {
     e.stopPropagation();
     setShowInput(true);
+    setHide(false);
     setSelectedNode({
-      node,
+      folderId: node.id,
       isFolder: false,
     });
   };
 
-  const onAddFolder = () => {
-    // insertNode()
+  const onAddNode = (event: any) => {
+    const data = {
+      name: inputValue,
+      isFolder: selectedNode.isFolder,
+      folderId: selectedNode.folderId,
+    };
+
+    console.log(data, "[DATA]");
+
+    if (event.keyCode === 13) {
+      onAddDataCb(data);
+      setSelectedNode({
+        folderId: null,
+        isFolder: false,
+      });
+      setShowInput(false);
+      setInputValue("");
+    }
+  };
+
+  const handleData = (cbData: any) => {
+    const { name, isFolder, folderId } = cbData;
+    const resultTree = insertNode(data, name, folderId, isFolder);
+    return resultTree;
+  };
+
+  const handleOnBlur = () => {
+    setInputValue("");
+    setShowInput(false);
   };
 
   return (
@@ -60,11 +95,13 @@ const FileExplorerTree = (props: any) => {
             </div>
 
             {showInput && (
-              <div className="newFolder" onBlur={() => setShowInput(false)}>
+              <div className="newFolder">
                 <input
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  onKeyDown={() => onAddFolder()}
+                  onKeyDown={(e) => onAddNode(e)}
+                  autoFocus
+                  onBlur={handleOnBlur}
                 />
               </div>
             )}
@@ -73,14 +110,14 @@ const FileExplorerTree = (props: any) => {
               style={{ display: hide ? "none" : "block", marginLeft: "15px" }}
             >
               {data?.children.map((d: any) => {
-                return <FileExplorerTree data={d} />;
+                return <FileExplorerTree data={d} onAddDataCb={handleData} />;
               })}
             </div>
           </>
         ) : (
-          <>
-            <div className="fileItem">🗃️ {data.name}</div>
-          </>
+          <div className="fileItem">
+            <CiFileOn /> {data.name}
+          </div>
         )}
       </div>
     </>
@@ -89,16 +126,18 @@ const FileExplorerTree = (props: any) => {
 
 const FileExplorer = () => {
   const [data, setData] = useState(masterData);
+  const { insertNode } = useFileActions();
 
-  const onAddDataCb = (cbData: any) => {
-    setData(cbData);
+  const handleData = (cbData: any) => {
+    const { name, isFolder, folderId } = cbData;
+    const resultTree = insertNode(data, name, folderId, isFolder);
+    console.log(resultTree, "[resultTree]");
+    setData(resultTree);
   };
 
-  return (
-    <>
-      <FileExplorerTree data={masterData} />
-    </>
-  );
+  console.log(data, "[TREE DATA]");
+
+  return <FileExplorerTree data={data} onAddDataCb={handleData} />;
 };
 
 export { FileExplorerTree };
