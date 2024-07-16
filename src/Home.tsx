@@ -7,7 +7,7 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <div>
-      Welcome to Ajay portfolio
+      <h3>Welcome to Ajay Portfolio</h3>
       <div className="gridContainer">
         <div>
           <Card
@@ -22,7 +22,7 @@ const Home = () => {
             }
           />
         </div>
-        <div style={{ marginLeft: "2rem" }}>
+        <div>
           <Card
             title="Pagination"
             body={<>This card contains functionality related to pagination</>}
@@ -33,7 +33,7 @@ const Home = () => {
             }
           />
         </div>
-        <div style={{ marginLeft: "2rem" }}>
+        <div>
           <Card
             title="Progress Bar"
             body={<>This card contains functionality related to Progress bar</>}
@@ -57,7 +57,7 @@ const Home = () => {
             }
           />
         </div>
-        <div style={{ marginLeft: "2rem" }}>
+        <div>
           <Card
             title="Stopwatch"
             body={<>This card contains functionality related to stopwatch</>}
@@ -68,7 +68,7 @@ const Home = () => {
             }
           />
         </div>
-        <div style={{ marginLeft: "2rem" }}>
+        <div>
           <Card
             title="File Explorer"
             body={
@@ -77,6 +77,20 @@ const Home = () => {
             actions={
               <>
                 <button onClick={() => navigate("/fileExplorer")}>Open</button>
+              </>
+            }
+          />
+        </div>
+
+        <div>
+          <Card
+            title="Nested Comments"
+            body={
+              <>This card contains functionality related to Nested comments</>
+            }
+            actions={
+              <>
+                <button onClick={() => navigate("/comments")}>Open</button>
               </>
             }
           />

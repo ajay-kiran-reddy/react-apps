@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "comment": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "likes": 0,
+    "children": []
+  },
+  {
+    "id": 2,
+    "comment": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
+    "likes": 3,
+    "children": [
+      {
+        "id": 7,
+        "comment": "with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+        "likes": 0,
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "comment": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable",
+    "likes": 5,
+    "children": [
+      {
+        "id": 5,
+        "comment": "Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+        "likes": 2,
+        "children": [
+          {
+            "id": 6,
+            "comment": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero ",
+            "likes": 0,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "comment": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    "likes": 0,
+    "children": []
+  }
+]

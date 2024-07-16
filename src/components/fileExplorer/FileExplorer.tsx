@@ -136,6 +136,7 @@ const FileExplorerTree = (props: any) => {
               {actions.open && (
                 <div id="actions">
                   <LuDelete
+                    style={{ paddingRight: "5px" }}
                     onClick={(e) =>
                       handleDeleteClick(e, data.id, data.isFolder)
                     }
@@ -186,7 +187,7 @@ const FileExplorerTree = (props: any) => {
             <CiFileOn /> {data.name}
             {actions.open && (
               <div id="actions">
-                <span style={{ marginRight: "5px" }}>
+                <span style={{ paddingRight: "5px" }}>
                   <LuDelete
                     onClick={(e) =>
                       handleDeleteClick(e, data.id, data.isFolder)

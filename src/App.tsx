@@ -7,6 +7,7 @@ import ProgressBar from "./components/progressBar/ProgressBar";
 import AutoCompleteLandingPage from "./components/autoComplete/AutoCompleteLandingPage";
 import Stopwatch from "./components/stopwatch/Stopwatch";
 import FileExplorer from "./components/fileExplorer/FileExplorer";
+import Comments from "./components/nestedComments/Comments";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/fileExplorer",
     element: <FileExplorer />,
+  },
+  {
+    path: "/comments",
+    element: <Comments />,
   },
 ]);
 

@@ -1,0 +1,60 @@
+.comments-container {
+  width: 100%;
+  text-align: left;
+}
+
+.comments-container > label {
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 1rem;
+}
+
+.comments-container > textarea {
+  padding: 10px;
+  display: block;
+  margin-top: 0.5rem;
+  min-width: 50%;
+  background-color: aliceblue;
+}
+
+.comments-list {
+  margin-top: 1rem;
+  /* border: 1px solid goldenrod; */
+}
+
+.comment-container {
+  border: 1px solid grey;
+  padding: 10px;
+  margin-top: 1rem;
+}
+
+.comment {
+  /* display: block; */
+
+  position: relative;
+  display: flex;
+}
+
+.comment-actions {
+  display: flex;
+  justify-items: baseline;
+  margin-top: 10px;
+}
+
+.likes {
+  padding-left: 5px;
+}
+
+.reply-button {
+  padding: 2px;
+  padding-top: 0;
+  background-color: transparent;
+  color: rgb(18, 139, 246);
+  margin-left: 10px;
+}
+
+.accordion {
+  cursor: pointer;
+  top: 0;
+  right: 0;
+}
