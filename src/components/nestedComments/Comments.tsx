@@ -14,6 +14,7 @@ export interface Comment {
 }
 interface CommentsProps {
   comments: Comment[];
+  onEdit: any;
 }
 
 const Comments = (props: CommentsProps) => {
@@ -22,7 +23,11 @@ const Comments = (props: CommentsProps) => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [showTextArea, setShowTextArea] = useState(false);
   const [input, setInput] = useState("");
-  const { addComment } = useComments();
+  const { addComment, editComment } = useComments();
+  const [editInfo, setEditInfo]: any = useState({
+    isEditing: false,
+    comment: null,
+  });
 
   const handleAccordion = (index: number) => {
     setShowNestedComments(!showNestedComments);
@@ -43,16 +48,32 @@ const Comments = (props: CommentsProps) => {
     setInput(value);
   };
 
+  const onEditComment = (comment: Comment) => {
+    setActiveIndex(comment.id);
+    setEditInfo({ isEditing: true, comment });
+    setInput(comment.comment);
+    setShowTextArea(true);
+    props.onEdit(comment);
+  };
+
+  console.log(editInfo, "[editInfo]");
+
   const onCommentSubmit = (event: any) => {
+    console.log("on submit");
     if (event.keyCode === 13) {
-      const result = addComment(comments, input, activeIndex);
-      console.log(result, "[RESULT]");
-      setInput("");
-      setShowNestedComments(true);
-      //   setActiveIndex(-1);
-      return result;
+      if (editInfo?.isEditing) {
+        const result = editComment(comments, input, editInfo?.comment?.id);
+        setInput("");
+        setEditInfo({ isEditing: false, comment: null });
+        return result;
+      } else {
+        const result = addComment(comments, input, 0);
+        setInput("");
+        return result;
+      }
     }
   };
+
   return (
     <div>
       <div className="comments-list">
@@ -86,6 +107,14 @@ const Comments = (props: CommentsProps) => {
                   >
                     Reply
                   </button>
+                  <span className="count-badge">{cm.children.length}</span>
+                  <span style={{ marginTop: "5px" }}>Comments</span>
+                  <button
+                    style={{ padding: "2px 6px", marginLeft: "1rem" }}
+                    onClick={() => onEditComment(cm)}
+                  >
+                    Edit
+                  </button>
                 </div>
 
                 <div style={{ margin: 5 }}>
@@ -104,7 +133,7 @@ const Comments = (props: CommentsProps) => {
                 {showNestedComments &&
                   cm.id === activeIndex &&
                   cm?.children?.map((child) => {
-                    return <Comments comments={[child]} />;
+                    return <Comments comments={[child]} onEdit={() => {}} />;
                   })}
               </div>
             </div>
@@ -118,15 +147,30 @@ const Comments = (props: CommentsProps) => {
 const CommentsContainer = () => {
   const [comments, setComments] = useState(data);
   const [input, setInput] = useState("");
-  const { addComment } = useComments();
+  const { addComment, editComment } = useComments();
+  const [editInfo, setEditInfo]: any = useState({
+    isEditing: false,
+    comment: null,
+  });
 
   const onCommentSubmit = (event: any) => {
     if (event.keyCode === 13) {
-      const result = addComment(comments, input, 0);
-      console.log(result, "[RESULT]");
-      setComments(result);
-      setInput("");
+      if (editInfo?.isEditing) {
+        const result = editComment(comments, input, editInfo.comment.id);
+        setComments(result);
+        setInput("");
+        setEditInfo({ isEditing: false, comment: null });
+      } else {
+        const result = addComment(comments, input, 0);
+        setComments(result);
+        setInput("");
+      }
     }
+  };
+
+  const onCommentEdit = (data: any) => {
+    setEditInfo({ isEditing: true, comment: data });
+    setInput(data.comment);
   };
 
   return (
@@ -138,7 +182,7 @@ const CommentsContainer = () => {
         onChange={(e) => setInput(e?.target?.value)}
         onKeyDown={onCommentSubmit}
       />
-      <Comments comments={comments} />
+      <Comments comments={comments} onEdit={onCommentEdit} />
     </div>
   );
 };

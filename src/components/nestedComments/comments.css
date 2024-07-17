@@ -58,3 +58,15 @@
   top: 0;
   right: 0;
 }
+
+.count-badge {
+  border-radius: 50%;
+  background-color: bisque;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 0.5rem;
+}
