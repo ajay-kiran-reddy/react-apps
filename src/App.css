@@ -1,0 +1,12 @@
+.developer-role {
+  background: -webkit-linear-gradient(#f75bb1, #537098, #9836f4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 18px !important;
+  margin-bottom: 2rem !important;
+}
+
+.developer-name {
+  font-size: 54px !important;
+  margin-bottom: 2rem !important;
+}
