@@ -10,6 +10,8 @@ const useComments = () => {
     };
     tree = Array.isArray(tree) ? tree : [tree];
 
+    console.log(parentId, "[PARENT ID]");
+
     /** If parent is is available identify the index of the parent and
      * insert the new comment in the respective children.
      * else insert it in the main tree array.

@@ -10,7 +10,6 @@
 }
 
 .comments-container > textarea {
-  padding: 10px;
   display: block;
   margin-top: 0.5rem;
   min-width: 50%;
@@ -24,21 +23,22 @@
 
 .comment-container {
   border: 1px solid grey;
-  padding: 10px;
+  padding: 10px 0 10px 0px;
   margin-top: 1rem;
+  width: 100%;
 }
 
 .comment {
-  /* display: block; */
-
   position: relative;
   display: flex;
+  width: 100%;
 }
 
 .comment-actions {
   display: flex;
   justify-items: baseline;
   margin-top: 10px;
+  padding: 0 10px 0 10px;
 }
 
 .likes {
@@ -46,27 +46,32 @@
 }
 
 .reply-button {
-  padding: 2px;
+  padding: 0px 5px;
   padding-top: 0;
   background-color: transparent;
   color: rgb(18, 139, 246);
   margin-left: 10px;
+  border: 1px solid rgb(227, 226, 226);
+  border-radius: 0.5rem;
 }
 
 .accordion {
   cursor: pointer;
   top: 0;
-  right: 0;
+  right: 5px !important;
+  margin-right: 5px;
 }
 
 .count-badge {
   border-radius: 50%;
-  background-color: bisque;
-  width: 30px;
-  height: 30px;
+  background-color: rgb(231, 229, 226);
+  width: 20px;
+  height: 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 0.5rem;
+  margin-right: 0.1rem;
+  margin-top: 0.5rem;
+  margin-left: 1rem;
 }

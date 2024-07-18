@@ -29,11 +29,6 @@ const Comments = (props: CommentsProps) => {
     comment: null,
   });
 
-  const handleAccordion = (index: number) => {
-    setShowNestedComments(!showNestedComments);
-    setActiveIndex(index);
-  };
-
   const onReply = (index: number) => {
     setShowTextArea(true);
     setActiveIndex(index);
@@ -41,7 +36,7 @@ const Comments = (props: CommentsProps) => {
 
   const handleOnBlur = () => {
     setActiveIndex(-1);
-    setShowNestedComments(false);
+    // setShowNestedComments(false);
   };
 
   const onTextAreaChange = (value: string) => {
@@ -56,42 +51,52 @@ const Comments = (props: CommentsProps) => {
     props.onEdit(comment);
   };
 
-  console.log(editInfo, "[editInfo]");
-
   const onCommentSubmit = (event: any) => {
     console.log("on submit");
     if (event.keyCode === 13) {
+      setShowTextArea(false);
       if (editInfo?.isEditing) {
         const result = editComment(comments, input, editInfo?.comment?.id);
         setInput("");
         setEditInfo({ isEditing: false, comment: null });
         return result;
       } else {
-        const result = addComment(comments, input, 0);
+        const result = addComment(comments, input, activeIndex);
         setInput("");
         return result;
       }
     }
   };
 
+  const handleShowAccordion = (index: number) => {
+    setShowNestedComments(true);
+    setActiveIndex(index);
+  };
+
+  const handleHideAccordion = () => {
+    setShowNestedComments(false);
+    setActiveIndex(-1);
+  };
+
   return (
     <div>
-      <div className="comments-list">
+      <div className="comments-list" style={{ marginLeft: "10px" }}>
         {comments?.map((cm) => {
           return (
             <div className="comment-container">
               <div className="comment">
-                {cm.comment}
+                <span style={{ padding: "0 10px" }}>{cm.comment}</span>
 
                 {cm?.children?.length > 0 && (
-                  <span
-                    className="accordion"
-                    onClick={() => handleAccordion(cm.id)}
-                  >
+                  <span className="accordion">
                     {showNestedComments && cm.id === activeIndex ? (
-                      <FaRegArrowAltCircleUp />
+                      <FaRegArrowAltCircleUp
+                        onClick={() => handleHideAccordion()}
+                      />
                     ) : (
-                      <FaRegArrowAltCircleDown />
+                      <FaRegArrowAltCircleDown
+                        onClick={() => handleShowAccordion(cm.id)}
+                      />
                     )}
                   </span>
                 )}
@@ -99,8 +104,10 @@ const Comments = (props: CommentsProps) => {
 
               <div>
                 <div className="comment-actions">
-                  <FaRegHeart cursor="pointer" />{" "}
-                  <span className="likes">{cm.likes}</span>
+                  <span style={{ padding: 10 }}>
+                    <FaRegHeart cursor="pointer" />
+                    <span className="likes">{cm.likes}</span>
+                  </span>
                   <button
                     className="reply-button"
                     onClick={() => onReply(cm.id)}
@@ -108,9 +115,9 @@ const Comments = (props: CommentsProps) => {
                     Reply
                   </button>
                   <span className="count-badge">{cm.children.length}</span>
-                  <span style={{ marginTop: "5px" }}>Comments</span>
+                  <span style={{ marginTop: "0.5rem" }}>Comments</span>
                   <button
-                    style={{ padding: "2px 6px", marginLeft: "1rem" }}
+                    className="reply-button"
                     onClick={() => onEditComment(cm)}
                   >
                     Edit
@@ -120,7 +127,7 @@ const Comments = (props: CommentsProps) => {
                 <div style={{ margin: 5 }}>
                   {showTextArea && activeIndex === cm.id && (
                     <textarea
-                      style={{ width: "100%", padding: 5 }}
+                      style={{ width: "100%" }}
                       placeholder="Enter your comment here ......."
                       onBlur={() => handleOnBlur()}
                       value={input}
