@@ -30,8 +30,6 @@ const useFetch = (
   );
 
   useEffect(() => {
-    console.log(query, "[query]");
-    console.log(autocomplete, "[auto complete]");
     if (!query || !autocomplete) {
       setData(null);
       setError(null);

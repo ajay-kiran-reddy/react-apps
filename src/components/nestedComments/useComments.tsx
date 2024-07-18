@@ -9,9 +9,6 @@ const useComments = () => {
       likes: 0,
     };
     tree = Array.isArray(tree) ? tree : [tree];
-
-    console.log(parentId, "[PARENT ID]");
-
     /** If parent is is available identify the index of the parent and
      * insert the new comment in the respective children.
      * else insert it in the main tree array.
@@ -22,7 +19,6 @@ const useComments = () => {
         tree[targetIndex].children.push(newComment);
         return tree;
       } else {
-        console.log("inside else");
         let filteredData: any = [];
         filteredData = tree.map((child: Comment) => {
           return addComment(child, comment, child.id);
@@ -36,8 +32,6 @@ const useComments = () => {
   };
 
   const editComment = (tree: any, comment: string, parentId: number) => {
-    console.log(tree, "[tree]");
-    console.log(parentId, "parentid");
     const targetIndex = tree.findIndex((com: any) => com.id === parentId);
     if (targetIndex !== -1) {
       tree[targetIndex].comment = comment;

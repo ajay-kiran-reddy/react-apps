@@ -25,7 +25,7 @@ const AutoCompleteLandingPage = () => {
         debounceWait={400}
         errorMessage={"Something has gone wrong"}
         emptyDataMessage={"No movie found with the given name"}
-        maxItems={5}
+        maxItems={10}
       />
     </div>
   );

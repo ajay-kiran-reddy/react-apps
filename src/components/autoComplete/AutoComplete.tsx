@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./auto.css";
 import { useFetch } from "./useFetch";
-import _ from "lodash";
 
 interface AutoCompleteProps {
   id: string;
@@ -54,9 +53,9 @@ const AutoComplete = (props: AutoCompleteProps) => {
     if (event.key === "Enter") {
       if (activeIndex === null) {
         setActiveIndex(0);
-        setQuery(data[0].title);
+        setQuery(data[0]?.title);
       } else {
-        setQuery(data[activeIndex].title);
+        setQuery(data[activeIndex]?.title);
       }
       setAutoComp(false);
       return;
@@ -90,10 +89,10 @@ const AutoComplete = (props: AutoCompleteProps) => {
   };
 
   return (
-    <div className="container">
+    <div className="auto-container">
       <label>{label}</label>
       <input
-        className="input"
+        className="auto-input"
         placeholder={placeholder}
         id={id}
         value={query}

@@ -23,6 +23,7 @@ const FileExplorerTree = (props: any) => {
     open: false,
     activeId: null,
   });
+  const [fileData, setFileData] = useState(data);
 
   const handleHideFolder = () => {
     setHide(!hide);
@@ -59,7 +60,6 @@ const FileExplorerTree = (props: any) => {
 
     if (event.keyCode === 13) {
       if (isEdititng) {
-        console.log(isEdititng, "[is eiting]");
         onEditDataCb({ name: inputValue, itemId: selectedNode.folderId });
       } else {
         onAddDataCb(data);
@@ -86,6 +86,7 @@ const FileExplorerTree = (props: any) => {
 
   const handleDeleteData = (cbData: any) => {
     const { isFolder, folderId } = cbData;
+    setInputValue("");
     const resultTree = deleteNode(data, folderId, isFolder);
     return resultTree;
   };
@@ -96,6 +97,7 @@ const FileExplorerTree = (props: any) => {
     isFolder: boolean
   ) => {
     event.stopPropagation();
+    setInputValue("test");
     onDeleteDataCb({
       folderId,
       isFolder,
@@ -103,7 +105,6 @@ const FileExplorerTree = (props: any) => {
   };
 
   const handleEditClick = (event: any, folderData: any) => {
-    console.log("clicking edit icon", folderData);
     event.stopPropagation();
     setIsEditing(true);
     setShowInput(true);
@@ -118,6 +119,7 @@ const FileExplorerTree = (props: any) => {
     const { name, itemId } = cbData;
     const resultTree = editNode(data, itemId, name);
     setIsEditing(false);
+    // setFileData(resultTree);
     return resultTree;
   };
 
@@ -166,16 +168,18 @@ const FileExplorerTree = (props: any) => {
             <div
               style={{ display: hide ? "none" : "block", marginLeft: "15px" }}
             >
-              {data?.children.map((d: any) => {
-                return (
-                  <FileExplorerTree
-                    data={d}
-                    onAddDataCb={handleData}
-                    onDeleteDataCb={handleDeleteData}
-                    onEditDataCb={handleEditData}
-                  />
-                );
-              })}
+              {data?.children
+                .filter((dt: any) => dt.id)
+                .map((d: any) => {
+                  return (
+                    <FileExplorerTree
+                      data={d}
+                      onAddDataCb={handleData}
+                      onDeleteDataCb={handleDeleteData}
+                      onEditDataCb={handleEditData}
+                    />
+                  );
+                })}
             </div>
           </>
         ) : (
@@ -234,6 +238,7 @@ const FileExplorer = () => {
   const handleDeleteData = (cbData: any) => {
     const { isFolder, folderId } = cbData;
     const results = deleteNode(data, folderId, isFolder);
+    console.log(results, "[RESULTS]");
     setData(results);
   };
 
