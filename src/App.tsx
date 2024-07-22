@@ -7,45 +7,62 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import CodeIcon from "@mui/icons-material/Code";
 import Hero from "./components/Hero";
+import About from "./components/About";
+import Technologies from "./components/Technologies";
+import Experience from "./components/Experience";
+import Projects from "./components/Projects";
+import { Grid } from "@mui/material";
 
 export default function PrimarySearchAppBar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="static" style={{ backgroundColor: "transparent" }}>
         <Toolbar>
-          <Typography
-            variant="h5"
-            style={{ cursor: "pointer" }}
-            noWrap
-            color="primary"
-            component="div"
-          >
-            <IconButton>
-              <CodeIcon color="secondary" fontSize="large" />
-            </IconButton>
-            AJAY KIRAN REDDY
-          </Typography>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <LinkedInIcon color="primary" />
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <GitHubIcon color="primary" />
-            </IconButton>
-          </Box>
+          <Grid container spacing={0}>
+            <Grid item xs={6} style={{ textAlign: "left" }}>
+              <Typography
+                variant="h5"
+                style={{ cursor: "pointer" }}
+                noWrap
+                color="primary"
+                component="div"
+              >
+                <IconButton>
+                  <CodeIcon color="secondary" fontSize="large" />
+                </IconButton>
+                AJAY KIRAN REDDY
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6} style={{ textAlign: "right" }}>
+              <Box>
+                <IconButton
+                  size="large"
+                  aria-label="show 4 new mails"
+                  color="inherit"
+                >
+                  <LinkedInIcon color="primary" />
+                </IconButton>
+                <IconButton
+                  size="large"
+                  aria-label="show 17 new notifications"
+                  color="inherit"
+                >
+                  <GitHubIcon color="primary" />
+                </IconButton>
+              </Box>
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
 
-      <Hero />
+      <div style={{ padding: "0 2rem" }}>
+        <Hero />
+        <About />
+        <Technologies />
+        <Experience />
+        <Projects />
+      </div>
     </Box>
   );
 }

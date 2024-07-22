@@ -1,34 +1,61 @@
 import { Grid, Typography } from "@mui/material";
 import "../App.css";
+import { HERO_CONTENT } from "../constants/constants";
+import { motion } from "framer-motion";
 
+// const container = (delay) => ({
+//   hidden: { x: -100, opacity: 0 },
+//   visible: {
+//     x: 0,
+//     opacity: 1,
+//     transition: { duration: 0.5, delay: delay },
+//   },
+// });
 const Hero = () => {
   return (
-    <div>
-      <Grid container spacing={3} style={{ margin: "1rem" }}>
+    <div style={{ marginTop: "1rem" }}>
+      <Grid container spacing={3} style={{ textAlign: "center" }}>
         <Grid item xs={12} md={6}>
-          <Typography color="primary" className="developer-name">
-            Ajay Kiran Reddy
-          </Typography>
+          <motion.div
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <Typography color="primary" className="developer-name">
+              Ajay Kiran Reddy
+            </Typography>
+          </motion.div>
 
-          <Typography className="developer-role">
-            Full Stack Developer
-          </Typography>
-
-          <Typography color="primary">
-            I am a passionate full stack developer with a knack for crafting
-            robust and scalable web applications. With 5 years of hands-on
-            experience, I have honed my skills in front-end technologies like
-            React and Next.js, as well as back-end technologies like Node.js,
-            MySQL, PostgreSQL, and MongoDB. My goal is to leverage my expertise
-            to create innovative solutions that drive business growth and
-            deliver exceptional user experiences.
-          </Typography>
+          <motion.div
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5, delay: 1 }}
+          >
+            <Typography className="developer-role">
+              Full Stack Developer
+            </Typography>
+          </motion.div>
+          <motion.div
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5, delay: 1.5 }}
+          >
+            <Typography style={{ textAlign: "left" }} color="primary">
+              {HERO_CONTENT}
+            </Typography>
+          </motion.div>
         </Grid>
         <Grid item xs={12} md={6}>
-          <img
-            src="https://react-portfolio-kevin.vercel.app/assets/kevinRushProfile-C6ZBCIX3.png"
-            alt="profile"
-          />
+          <motion.div
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 100 }}
+            transition={{ duration: 1, delay: 1.5 }}
+          >
+            <img
+              src="https://react-portfolio-kevin.vercel.app/assets/kevinRushProfile-C6ZBCIX3.png"
+              alt="profile"
+            />
+          </motion.div>
         </Grid>
       </Grid>
     </div>
