@@ -58,13 +58,16 @@
 .skill {
   padding: 10px;
   margin: 1rem;
+  cursor: pointer;
 }
 
 .skill-label {
   color: #9e32f0;
+  font-weight: 500;
   padding: 10px;
   background-color: #353333;
   border-radius: 10px;
+  font-size: 1rem;
 }
 .contact-container {
   margin-top: 5rem;

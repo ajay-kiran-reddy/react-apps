@@ -96,6 +96,7 @@ export const PROJECTS = [
       "Foundation Components",
       "Redux Thunk",
     ],
+    link: "https://www.allstate.com/",
   },
   {
     title: "Value Explorer",

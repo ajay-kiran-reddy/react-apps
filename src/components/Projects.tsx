@@ -1,9 +1,12 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import "../App.css";
 import { PROJECTS } from "../constants/constants";
 import { motion } from "framer-motion";
-
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 const Projects = () => {
+  const handleLaunchProject = (url: string) => {
+    window.open(url, "_blank");
+  };
   return (
     <div>
       <motion.div
@@ -32,6 +35,31 @@ const Projects = () => {
                         src={item.image}
                         style={{ height: "100%", width: "100%" }}
                       />
+
+                      <Box mt={2} style={{ textAlign: "center" }}>
+                        <Button
+                          size="small"
+                          onClick={() => handleLaunchProject(item.link)}
+                          startIcon={
+                            <motion.div
+                              animate={{ y: [-5, 5] }}
+                              transition={{
+                                duration: 4,
+                                ease: "easeOut",
+                                repeat: Infinity,
+                                repeatType: "reverse",
+                                x: { type: "spring", bounce: 20 },
+                                bounce: 5,
+                              }}
+                            >
+                              <ArrowOutwardIcon />
+                            </motion.div>
+                          }
+                          variant="outlined"
+                        >
+                          Launch
+                        </Button>
+                      </Box>
                     </motion.div>
                   </Grid>
                   <Grid item xs={1}></Grid>
