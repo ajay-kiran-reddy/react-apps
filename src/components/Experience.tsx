@@ -49,11 +49,19 @@ const Experience = () => {
                           {item.description}
                         </Typography>
 
-                        <div className="skills-container">
+                        <Grid container>
                           {item.technologies.map((tech) => {
-                            return <span className="skill">{tech}</span>;
+                            return (
+                              <Grid
+                                item
+                                className="skill"
+                                style={{ marginTop: "1rem" }}
+                              >
+                                <span className="skill-label">{tech}</span>
+                              </Grid>
+                            );
                           })}
-                        </div>
+                        </Grid>
                       </Box>
                     </motion.div>
                   </Grid>

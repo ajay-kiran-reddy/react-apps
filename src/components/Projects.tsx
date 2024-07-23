@@ -22,7 +22,7 @@ const Projects = () => {
             {PROJECTS.map((item) => {
               return (
                 <>
-                  <Grid item xs={3} style={{ marginTop: "1rem" }}>
+                  <Grid item xs={5} style={{ marginTop: "1rem" }}>
                     <motion.div
                       whileInView={{ opacity: 1, x: 0 }}
                       initial={{ opacity: 0, x: -100 }}
@@ -30,12 +30,12 @@ const Projects = () => {
                     >
                       <img
                         src={item.image}
-                        style={{ height: "150px", width: "100%" }}
+                        style={{ height: "100%", width: "100%" }}
                       />
                     </motion.div>
                   </Grid>
                   <Grid item xs={1}></Grid>
-                  <Grid item xs={8} style={{ marginTop: "1rem" }}>
+                  <Grid item xs={6} style={{ marginTop: "1rem" }}>
                     <motion.div
                       whileInView={{ opacity: 1, x: 0 }}
                       initial={{ opacity: 0, x: 100 }}
@@ -50,11 +50,19 @@ const Projects = () => {
                           {item.description}
                         </Typography>
 
-                        <div className="skills-container">
+                        <Grid container>
                           {item.technologies.map((tech) => {
-                            return <span className="skill">{tech}</span>;
+                            return (
+                              <Grid
+                                item
+                                className="skill"
+                                style={{ marginTop: "1rem" }}
+                              >
+                                <span className="skill-label">{tech}</span>
+                              </Grid>
+                            );
                           })}
-                        </div>
+                        </Grid>
                       </Box>
                     </motion.div>
                   </Grid>

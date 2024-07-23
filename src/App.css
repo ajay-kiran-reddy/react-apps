@@ -56,12 +56,16 @@
 }
 
 .skill {
-  color: #9e32f0;
   padding: 10px;
-  background-color: #212020;
-  margin-right: 1rem;
+  margin: 1rem;
 }
 
+.skill-label {
+  color: #9e32f0;
+  padding: 10px;
+  background-color: #353333;
+  border-radius: 10px;
+}
 .contact-container {
   margin-top: 5rem;
   text-align: center;

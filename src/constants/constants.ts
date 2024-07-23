@@ -2,7 +2,7 @@ import allstate from "../assets/projects/allstate.png";
 import copernicus from "../assets/projects/copernicus.png";
 import ecommerce from "../assets/projects/e-commerce.png";
 import project4 from "../assets/projects/project-4.jpg";
-import cricscore from "../assets/projects/project-1.jpg";
+import cricscore from "../assets/projects/cricket.png";
 
 export const HERO_CONTENT = `I am a passionate full stack developer with a knack for crafting
  robust and scalable web applications. With 8 years of hands-on experience, I have honed my 
@@ -29,7 +29,17 @@ export const EXPERIENCES = [
     Collaborated with stakeholders to define project requirements and timelines.Developed a
      RESTful API that allowed for secure and efficient data transfer between the front-end
 and back-end systems.Designed efficient database schemas to store data from the web applications.`,
-    technologies: ["Javascript", "React.js", "Express", "Redux", "MongoDB"],
+    technologies: [
+      "Javascript",
+      "React.js",
+      "Redux",
+      "MongoDB",
+      "My Sql",
+      "Material UI",
+      "Node Js",
+      "Nest Js",
+      "Express",
+    ],
   },
   {
     year: "2019 - 2021",
@@ -41,7 +51,17 @@ and back-end systems.Designed efficient database schemas to store data from the 
      application performance by refactoring code and improving page load times.
      Validated code for proper structuring, security and compatibility with different browsers, devices
 or operating systems`,
-    technologies: ["HTML", "CSS", "React.js", "mySQL"],
+
+    technologies: [
+      "HTML",
+      "CSS",
+      "Javascript",
+      "React.js",
+      "Redux",
+      "MySQL",
+      "Azure Function Apps",
+      "Express",
+    ],
   },
   {
     year: "2018 - 2019",
@@ -50,14 +70,14 @@ or operating systems`,
     description: `Developed and maintained web applications using JavaScript, React.js, and Node.js. 
     Designed and implemented RESTful APIs for data communication. Collaborated with cross-functional
      teams to deliver high-quality software products on schedule.`,
-    technologies: ["Python", "Svelte", "Three.js", "Postgres"],
+    technologies: ["React", "Redux Thunk", "Mongo Db", "Express"],
   },
   {
     year: "2016 - 2017",
     role: "Software Engineer",
     company: "Infosys",
     description: `Contributed to the development of web applications using JavaScript, React.js, and Node.js. Managed databases and implemented data storage solutions using MongoDB. Worked closely with product managers to prioritize features and enhancements.`,
-    technologies: ["Ruby", "Rails", "PHP", "Sqlite"],
+    technologies: ["CSS", "HTML", "Javascript", "React"],
   },
 ];
 
@@ -65,32 +85,61 @@ export const PROJECTS = [
   {
     title: "All State",
     image: allstate,
-    description:
-      "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["HTML", "CSS", "React", "Bootstrap"],
+    description: `This project enables allstate's agents to complete insurance transaction behalf of user's depending upon their need.
+    I'm involved in working across different products throughout entire SDLC of respective projects.
+       Allstate provides insurance for Auto, Renters, Home, Condo, Motorcycle etc.`,
+    technologies: [
+      "HTML",
+      "CSS",
+      "Java Script",
+      "React",
+      "Foundation Components",
+      "Redux Thunk",
+    ],
   },
   {
     title: "Value Explorer",
     image: copernicus,
-    description:
-      "A platform for creating and publishing blog posts, with features like rich text editing, commenting, and user profiles.",
-    technologies: ["HTML", "CSS", "Vue.js", "Express", "mySQL"],
+    description: `This project enables Customer Executives, Business Development, Pre-sales and partners for all Go
+          To Market (GTM) opportunities
+          It enables to combine value based selling, democratizing AI/ML based data Analytical and insights,
+          industry based workflows and automated RFP responses which solves the problems of bringing
+          scale to Sales process, all front lines in BY having quick access to value, opportunity, and their
+          Peer analysis, convert raw data to meaningful insights, quick access to industry use-cases`,
+    technologies: [
+      "HTML",
+      "CSS",
+      "React.js",
+      "Express",
+      "Nest Js",
+      "Azure Function Apps",
+      "MySQL",
+      "Redux - Saga",
+    ],
     link: "https://bylumuiportalpltna.azureedge.net/home/",
   },
   {
     title: "E-Commerce Website",
     image: ecommerce,
-    description:
-      "A fully functional e-commerce website with features like product listing, shopping cart, and user authentication.",
-    technologies: ["HTML", "CSS", "React", "Node.js", "MongoDB"],
+    description: `A fully functional e-commerce website with features like Products listing, Shopping cart, Checkout and user authentication
+       and Admin Dashboard for managing all the products information and their categories and Orders placed by users`,
+    technologies: [
+      "HTML",
+      "CSS",
+      "Javascript",
+      "React",
+      "Node.js",
+      "Express JS",
+      "MongoDB",
+    ],
     link: "https://av-ecommerce-client.onrender.com/",
   },
   {
     title: "Cric Score",
     image: cricscore,
-    description:
-      "An application for managing tasks and projects, with features such as task creation, assignment, and progress tracking.",
-    technologies: ["HTML", "CSS", "Angular", "Firebase"],
+    description: `Get Live Cricket Scores, Scorecard, Schedules of International and Domestic cricket matches
+       along with Latest News, Videos and ICC Cricket Rankings of different nations and their players`,
+    technologies: ["HTML", "CSS", "Javascript", "React", "Redux", "Ant Design"],
     link: "https://av-ecommerce-client.onrender.com/",
   },
   {
@@ -98,13 +147,7 @@ export const PROJECTS = [
     image: project4,
     description:
       "An application for managing tasks and projects, with features such as task creation, assignment, and progress tracking.",
-    technologies: ["HTML", "CSS", "Angular", "Firebase"],
+    technologies: ["HTML", "CSS", "Javascript", "React", "Ant Design"],
     link: "https://av-ecommerce-client.onrender.com/",
   },
 ];
-
-export const CONTACT = {
-  address: "767 Fifth Avenue, New York, NY 10153 ",
-  phoneNo: "+12 4555 666 00 ",
-  email: "me@example.com",
-};
