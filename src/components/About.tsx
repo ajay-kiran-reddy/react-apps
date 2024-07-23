@@ -3,6 +3,7 @@ import React from "react";
 import { ABOUT_TEXT } from "../constants/constants";
 import "../App.css";
 import { motion } from "framer-motion";
+import Ajay from "../assets/about_me_2.jpg";
 
 const About = () => {
   return (
@@ -21,11 +22,7 @@ const About = () => {
             initial={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <img
-              src="https://react-portfolio-kevin.vercel.app/assets/about-Cs4bjHyo.jpg"
-              alt="about_pic"
-              style={{ width: "100%", maxHeight: "500px" }}
-            />
+            <img src={Ajay} alt="about_pic" style={{ maxHeight: "400px" }} />
           </motion.div>
         </Grid>
         <Grid item xs={12} md={6}>

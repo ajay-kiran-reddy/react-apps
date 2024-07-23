@@ -2,18 +2,11 @@ import { Grid, Typography } from "@mui/material";
 import "../App.css";
 import { HERO_CONTENT } from "../constants/constants";
 import { motion } from "framer-motion";
+import Ajay from "../assets/ajay_profile_2.jpg";
 
-// const container = (delay) => ({
-//   hidden: { x: -100, opacity: 0 },
-//   visible: {
-//     x: 0,
-//     opacity: 1,
-//     transition: { duration: 0.5, delay: delay },
-//   },
-// });
 const Hero = () => {
   return (
-    <div style={{ marginTop: "1rem" }}>
+    <div style={{ marginBottom: "5rem" }}>
       <Grid container spacing={3} style={{ textAlign: "center" }}>
         <Grid item xs={12} md={6}>
           <motion.div
@@ -51,10 +44,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 100 }}
             transition={{ duration: 1, delay: 1.5 }}
           >
-            <img
-              src="https://react-portfolio-kevin.vercel.app/assets/kevinRushProfile-C6ZBCIX3.png"
-              alt="profile"
-            />
+            <img src={Ajay} alt="about_pic" style={{ maxHeight: "500px" }} />
           </motion.div>
         </Grid>
       </Grid>

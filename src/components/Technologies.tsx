@@ -1,5 +1,5 @@
 import "../App.css";
-import { Grid, Typography } from "@mui/material";
+import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import { IoLogoReact } from "react-icons/io5";
 import { SiNextdotjs } from "react-icons/si";
 import { SiMongodb } from "react-icons/si";
@@ -11,19 +11,6 @@ import { FaHtml5 } from "react-icons/fa";
 import { FaCss3 } from "react-icons/fa";
 import { TbBrandRedux } from "react-icons/tb";
 import { motion } from "framer-motion";
-
-const iconVariants = (duration: number) => ({
-  initial: { y: -10 },
-  animate: {
-    y: [10, -10],
-    transition: {
-      duration,
-      ease: "linear",
-      repeat: Infinity,
-      repeaType: "reverse",
-    },
-  },
-});
 
 const Technologies = () => {
   const techStack = [
@@ -95,7 +82,7 @@ const Technologies = () => {
       <motion.div
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        transition={{ duration: 1, delay: 0.5 }}
       >
         <Typography className="technologies">Technologies</Typography>
       </motion.div>
@@ -112,12 +99,20 @@ const Technologies = () => {
               {techStack.map((tech) => {
                 return (
                   <motion.div
-                    variants={iconVariants(tech.duration)}
-                    initial="initial"
-                    animate="animate"
+                    animate={{ y: [-10, 10] }}
+                    transition={{
+                      duration: tech.duration,
+                      ease: "easeOut",
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      x: { type: "spring", bounce: 20 },
+                      bounce: 5,
+                    }}
                   >
                     <Grid className="tech" item style={{ margin: "0.5rem" }}>
-                      {tech.icon}
+                      <Tooltip title={tech.name}>
+                        <IconButton>{tech.icon}</IconButton>
+                      </Tooltip>
                     </Grid>
                   </motion.div>
                 );

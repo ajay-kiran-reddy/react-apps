@@ -11,8 +11,15 @@ import About from "./components/About";
 import Technologies from "./components/Technologies";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
-import { Grid } from "@mui/material";
+import { Divider, Grid } from "@mui/material";
+import { FaMedium } from "react-icons/fa6";
+import Contact from "./components/Contact";
 
+const dividerStyle = {
+  width: "100%",
+  backgroundColor: "#292c2e",
+  margin: "5rem 0",
+};
 export default function PrimarySearchAppBar() {
   return (
     <Box>
@@ -38,17 +45,27 @@ export default function PrimarySearchAppBar() {
               <Box>
                 <IconButton
                   size="large"
-                  aria-label="show 4 new mails"
                   color="inherit"
+                  href="https://www.linkedin.com/in/ajay-kiran-reddy-thalla-73985393/"
+                  target="_blank"
                 >
                   <LinkedInIcon color="primary" />
                 </IconButton>
                 <IconButton
                   size="large"
-                  aria-label="show 17 new notifications"
                   color="inherit"
+                  href="https://github.com/ajay-kiran-reddy"
+                  target="_blank"
                 >
                   <GitHubIcon color="primary" />
+                </IconButton>
+                <IconButton
+                  size="large"
+                  color="inherit"
+                  href="https://medium.com/@ajaykiranreddy999"
+                  target="_blank"
+                >
+                  <FaMedium style={{ color: "#fff" }} />
                 </IconButton>
               </Box>
             </Grid>
@@ -56,12 +73,25 @@ export default function PrimarySearchAppBar() {
         </Toolbar>
       </AppBar>
 
-      <div style={{ padding: "0 2rem" }}>
+      <div style={{ padding: "0 2rem", marginTop: "8rem" }}>
         <Hero />
+
+        <Divider component="div" style={dividerStyle} />
         <About />
+
+        <Divider component="div" style={dividerStyle} />
+
         <Technologies />
+
+        <Divider component="div" style={dividerStyle} />
+
         <Experience />
+
+        <Divider component="div" style={dividerStyle} />
         <Projects />
+
+        <Divider component="div" style={dividerStyle} />
+        <Contact />
       </div>
     </Box>
   );
