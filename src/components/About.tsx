@@ -1,5 +1,4 @@
 import { Grid, Typography } from "@mui/material";
-import React from "react";
 import { ABOUT_TEXT } from "../constants/constants";
 import "../App.css";
 import { motion } from "framer-motion";

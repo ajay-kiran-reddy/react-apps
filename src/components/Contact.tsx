@@ -1,5 +1,4 @@
 import { Grid, IconButton, Typography } from "@mui/material";
-import React from "react";
 import "../App.css";
 import { FaPhone } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
