@@ -8,9 +8,9 @@ const Contact = () => {
   return (
     <div className="contact-container">
       <Grid container>
-        <Grid item xs={4}></Grid>
+        <Grid item xs={12} md={6} lg={4}></Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={12} md={6} lg={4} style={{ textAlign: "center" }}>
           <motion.div
             whileInView={{ opacity: 1, y: 0 }}
             initial={{ opacity: 0, y: -100 }}
@@ -43,7 +43,6 @@ const Contact = () => {
               color="primary"
               variant="subtitle2"
               style={{ cursor: "pointer" }}
-              // href="mailto:ajaykiranreddy999@gmail.com"
             >
               <IconButton>
                 <SiGmail style={{ color: "red", fontSize: 12 }} />
@@ -58,7 +57,7 @@ const Contact = () => {
             </Typography>
           </motion.div>
         </Grid>
-        <Grid item xs={4}></Grid>
+        <Grid item xs={12} md={6} lg={4}></Grid>
       </Grid>
     </div>
   );
