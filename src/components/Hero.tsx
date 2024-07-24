@@ -44,7 +44,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 100 }}
             transition={{ duration: 1, delay: 1.5 }}
           >
-            <img src={Ajay} alt="about_pic" style={{ maxHeight: "500px" }} />
+            <img src={Ajay} alt="about_pic" style={{ maxHeight: "400px" }} />
           </motion.div>
         </Grid>
       </Grid>

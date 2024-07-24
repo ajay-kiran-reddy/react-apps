@@ -22,8 +22,11 @@ const dividerStyle = {
 };
 export default function PrimarySearchAppBar() {
   return (
-    <Box>
-      <AppBar position="static" style={{ backgroundColor: "transparent" }}>
+    <>
+      <AppBar
+        position="static"
+        style={{ backgroundColor: "transparent", maxWidth: "inherit" }}
+      >
         <Toolbar>
           <Grid container spacing={0}>
             <Grid item xs={6} style={{ textAlign: "left" }}>
@@ -73,7 +76,7 @@ export default function PrimarySearchAppBar() {
         </Toolbar>
       </AppBar>
 
-      <div style={{ padding: "0 2rem", marginTop: "8rem" }}>
+      <div style={{ padding: "0 0 0 2rem", marginTop: "8rem" }}>
         <Hero />
 
         <Divider component="div" style={dividerStyle} />
@@ -93,6 +96,6 @@ export default function PrimarySearchAppBar() {
         <Divider component="div" style={dividerStyle} />
         <Contact />
       </div>
-    </Box>
+    </>
   );
 }

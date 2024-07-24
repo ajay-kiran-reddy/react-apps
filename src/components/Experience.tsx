@@ -21,8 +21,8 @@ const Experience = () => {
           <Grid container spacing={3}>
             {EXPERIENCES.map((item) => {
               return (
-                <>
-                  <Grid item xs={4} style={{ marginTop: "1rem" }}>
+                <Grid container spacing={3} className="project-container">
+                  <Grid item xs={12} md={4} style={{ marginTop: "1rem" }}>
                     <motion.div
                       whileInView={{ opacity: 1, x: 0 }}
                       initial={{ opacity: 0, x: -100 }}
@@ -34,7 +34,7 @@ const Experience = () => {
                     </motion.div>
                   </Grid>
 
-                  <Grid item xs={8} style={{ marginTop: "1rem" }}>
+                  <Grid item xs={12} md={8} style={{ marginTop: "1rem" }}>
                     <motion.div
                       whileInView={{ opacity: 1, x: 0 }}
                       initial={{ opacity: 0, x: 100 }}
@@ -65,7 +65,7 @@ const Experience = () => {
                       </Box>
                     </motion.div>
                   </Grid>
-                </>
+                </Grid>
               );
             })}
           </Grid>

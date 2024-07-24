@@ -21,7 +21,11 @@ const About = () => {
             initial={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <img src={Ajay} alt="about_pic" style={{ maxHeight: "400px" }} />
+            <img
+              src={Ajay}
+              alt="about_pic"
+              style={{ maxHeight: "400px", width: "100%" }}
+            />
           </motion.div>
         </Grid>
         <Grid item xs={12} md={6}>

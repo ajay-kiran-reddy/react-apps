@@ -106,7 +106,6 @@ const Technologies = () => {
                       repeat: Infinity,
                       repeatType: "reverse",
                       x: { type: "spring", bounce: 20 },
-                      bounce: 5,
                     }}
                   >
                     <Grid className="tech" item style={{ margin: "0.5rem" }}>

@@ -65,11 +65,19 @@
   color: #9e32f0;
   font-weight: 500;
   padding: 10px;
-  background-color: #353333;
+  background-color: #242222;
   border-radius: 10px;
   font-size: 1rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .contact-container {
   margin-top: 5rem;
   text-align: center;
+}
+
+.project-container {
+  border: 1px dashed rgb(66, 65, 65);
+  padding: 1rem;
+  margin: 1rem !important;
+  border-radius: 1rem;
 }
