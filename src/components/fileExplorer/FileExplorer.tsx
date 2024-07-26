@@ -23,7 +23,6 @@ const FileExplorerTree = (props: any) => {
     open: false,
     activeId: null,
   });
-  const [fileData, setFileData] = useState(data);
 
   const handleHideFolder = () => {
     setHide(!hide);

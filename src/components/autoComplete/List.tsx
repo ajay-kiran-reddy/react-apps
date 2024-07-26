@@ -1,4 +1,3 @@
-import React from "react";
 import "./auto.css";
 
 const List = ({ items, activeIndex }: any) => {

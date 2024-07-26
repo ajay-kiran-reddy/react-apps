@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./toast.css";
 import { FaInfoCircle } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
@@ -15,7 +15,7 @@ interface ToastProps {
 }
 
 const Toast = (props: ToastProps) => {
-  const { message, open, severity, onClose, position = "bottom-left" } = props;
+  const { message, severity, onClose, position = "bottom-left" } = props;
 
   const ToastIcon = () => {
     let Icon = <FaInfoCircle size={12} />;
