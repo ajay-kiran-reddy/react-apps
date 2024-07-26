@@ -19,7 +19,11 @@ export default {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+<<<<<<< HEAD
     project: ['./tsconfig.json', './tsconfig.node.json'],
+=======
+    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
+>>>>>>> a73a0ff3a741fa2c9edac39b1b8efbbaae9a26c4
     tsconfigRootDir: __dirname,
   },
 }
