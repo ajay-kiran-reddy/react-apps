@@ -8,6 +8,7 @@ import AutoCompleteLandingPage from "./components/autoComplete/AutoCompleteLandi
 import Stopwatch from "./components/stopwatch/Stopwatch";
 import FileExplorer from "./components/fileExplorer/FileExplorer";
 import Comments from "./components/nestedComments/Comments";
+import Cricket from "./components/cricket/Cricket";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/comments",
     element: <Comments />,
+  },
+  {
+    path: "/cricScore",
+    element: <Cricket />,
   },
 ]);
 
