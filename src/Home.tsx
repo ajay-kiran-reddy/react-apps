@@ -4,6 +4,7 @@ import "./App.css";
 
 const Home = () => {
   const navigate = useNavigate();
+
   return (
     <div>
       <h3>Welcome to Ajay Portfolio</h3>
