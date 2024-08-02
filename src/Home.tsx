@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import "./App.css";
-import { Card, Col, Row, Tooltip } from "antd";
-import { IoRocketOutline } from "react-icons/io5";
 import cricket from "../assets/cricket.png";
 import autoComp from "../assets/autoComp.png";
 import comments from "../assets/comments.jpeg";
@@ -11,8 +9,14 @@ import progressbar from "../assets/ProgressBar.png";
 import stopwatch from "../assets/stopwatch.png";
 import toast from "../assets/toast.png";
 import { useEffect } from "react";
-
-const { Meta } = Card;
+import {
+  Button,
+  Card,
+  CardActions,
+  CardHeader,
+  CardMedia,
+  Grid,
+} from "@mui/material";
 
 const CardsContent = [
   {
@@ -62,7 +66,7 @@ const CardsContent = [
   {
     title: "Cric Score",
     description: "This card contains functionality related to cricket score",
-    path: "/cricScore",
+    path: "/cricket",
     image: cricket,
   },
 ];
@@ -82,27 +86,27 @@ const Home = () => {
 
   return (
     <div>
-      <Row gutter={[48, 16]}>
+      <Grid container spacing={3}>
         {CardsContent.map((card) => {
           return (
-            <Col lg={6} md={8} sm={12} xs={24} span={5}>
-              <Card
-                cover={<img alt={card.title} src={card.image} height={200} />}
-                actions={[
-                  <Tooltip title="Launch">
-                    <IoRocketOutline
-                      size={20}
-                      onClick={() => navigate(card.path)}
-                    />
-                  </Tooltip>,
-                ]}
-              >
-                <Meta title={card.title} description={card.description} />
+            <Grid item lg={3} md={4} sm={6} xs={12}>
+              <Card>
+                <CardHeader title={card.title} subheader={card.description} />
+                <CardMedia
+                  component="img"
+                  height="194"
+                  image={card.image}
+                  alt="Paella dish"
+                />
+
+                <CardActions>
+                  <Button onClick={() => navigate(card.path)}>Launch</Button>
+                </CardActions>
               </Card>
-            </Col>
+            </Grid>
           );
         })}
-      </Row>
+      </Grid>
     </div>
   );
 };

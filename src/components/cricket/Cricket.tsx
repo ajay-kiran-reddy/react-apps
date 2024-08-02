@@ -1,61 +1,85 @@
-import { Layout, Menu, theme } from "antd";
-import CurrentMatches from "./CurrentMatches";
-import { useState } from "react";
-import UpcomignMatches from "./UpComingMatches";
-
-const { Header, Content, Footer } = Layout;
-
-const navItems = [
-  {
-    key: 1,
-    label: "Current Matches",
-    id: 1,
-  },
-  {
-    key: 2,
-    label: "Upcoming Matches",
-    id: 2,
-  },
-];
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Chip,
+  Grid,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { fetchData } from "../../apiService/service";
+import { CRIC_API_END_POINTS } from "./constants";
+import data from "./mock.json";
+import { getChipByCat } from "./utils";
+import MatchesCarousel from "./CarouselCard";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import SportsCricketIcon from "@mui/icons-material/SportsCricket";
+import { useNavigate } from "react-router-dom";
 
 const Cricket = () => {
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+  const [matches, setMatches]: any = useState([]);
+  const navigate = useNavigate();
 
-  const [selectedPage, setSelectedPage] = useState(1);
+  const getMatchesList = async () => {
+    // const data = await fetchData(CRIC_API_END_POINTS.RECENT_MATCHES);
+    setMatches(data.recent);
+  };
 
-  console.log(selectedPage, "[selectedPage]");
+  useEffect(() => {
+    getMatchesList();
+  }, []);
 
+  console.log(matches, "[matches]");
   return (
-    <Layout>
-      <Header style={{ display: "flex", alignItems: "center" }}>
-        <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["1"]}
-          items={navItems}
-          style={{ flex: 1, minWidth: 0 }}
-          onClick={(e: any) => setSelectedPage(e.key)}
+    <Grid container>
+      <Grid item xs={12} style={{ textAlign: "left" }}>
+        <SportsCricketIcon
+          style={{ fontSize: 60, cursor: "pointer" }}
+          onClick={() => navigate("/cricket")}
+          color="primary"
         />
-      </Header>
-      <Content style={{ padding: "0 48px" }}>
-        <div
-          style={{
-            background: colorBgContainer,
-            minHeight: 280,
-            padding: 24,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          {selectedPage === 1 ? <CurrentMatches /> : <UpcomignMatches />}
-        </div>
-      </Content>
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
-      </Footer>
-    </Layout>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Grid container spacing={3}>
+          {matches?.filters?.matchType?.map((type: string) => {
+            return (
+              <Grid item xs={12}>
+                <Accordion defaultExpanded>
+                  <AccordionSummary
+                    expandIcon={<KeyboardArrowDownIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                  >
+                    <Chip
+                      label={type}
+                      style={{
+                        backgroundColor: getChipByCat(type),
+                        color: "#ffffff",
+                        fontWeight: 600,
+                      }}
+                    />
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    {matches?.typeMatches
+                      .filter((data: any) => data.matchType === type)[0]
+                      ?.seriesMatches?.map((match: any) => {
+                        return (
+                          <MatchesCarousel
+                            type={type}
+                            content={match.seriesAdWrapper}
+                          />
+                        );
+                      })}
+                  </AccordionDetails>
+                </Accordion>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 
