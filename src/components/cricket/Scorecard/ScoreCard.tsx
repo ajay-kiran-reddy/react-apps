@@ -42,7 +42,7 @@ const ScoreCard = () => {
             {scorecard?.matchHeader?.matchDescription}{" "}
           </Typography>
           <Grid container spacing={1}>
-            <Grid item xs={4}>
+            <Grid item xs={12} md={4}>
               <Typography
                 variant="body2"
                 color="text.secondary"
@@ -51,7 +51,7 @@ const ScoreCard = () => {
                 Series : {scorecard?.matchHeader.seriesName}
               </Typography>
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={12} md={8}>
               <Typography
                 variant="body2"
                 color="text.secondary"
@@ -91,7 +91,7 @@ const ScoreCard = () => {
               </Typography>
             </Grid>
 
-            <Grid item xs={4} style={{ textAlign: "left" }}>
+            <Grid item xs={8} style={{ textAlign: "left" }}>
               <Typography style={{ color: "grey" }} variant="caption">
                 PLAYER OF THE MATCH
               </Typography>
@@ -188,7 +188,12 @@ const ScoreCard = () => {
                                       <Grid
                                         item
                                         xs={6}
-                                        style={{ cursor: "pointer" }}
+                                        style={{
+                                          cursor: "pointer",
+                                          overflow: "hidden",
+                                          color: "grey",
+                                          fontWeight: 600,
+                                        }}
                                         onClick={() =>
                                           navigate(
                                             `/cricScore/player/${card?.batTeamDetails?.batsmenData[key]?.batId}`
@@ -207,12 +212,15 @@ const ScoreCard = () => {
                                           <PiBaseballCapDuotone />
                                         )}
                                       </Grid>
-                                      <Grid item xs={6}>
-                                        {" "}
+                                      <Grid
+                                        item
+                                        xs={6}
+                                        style={{ textAlign: "left" }}
+                                      >
                                         <span
                                           style={{
                                             fontSize: "12px",
-                                            marginLeft: "3rem",
+                                            // marginLeft: "3rem",
                                           }}
                                         >
                                           {
@@ -326,7 +334,11 @@ const ScoreCard = () => {
                                     )
                                   }
                                 >
-                                  <Grid item xs={5}>
+                                  <Grid
+                                    item
+                                    xs={5}
+                                    style={{ fontWeight: 600, color: "grey" }}
+                                  >
                                     {
                                       card?.bowlTeamDetails?.bowlersData[key]
                                         ?.bowlName

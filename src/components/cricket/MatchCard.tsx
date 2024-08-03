@@ -27,13 +27,13 @@ const MatchCard = ({ matchInfo, type }: any) => {
       ></div>
       <Grid item xs={12}>
         <Grid container spacing={3}>
-          <Grid item xs={4} style={{ textAlign: "end" }}></Grid>
-          <Grid item xs={4} style={{ textAlign: "center" }}>
+          <Grid item xs={12} md={4} style={{ textAlign: "end" }}></Grid>
+          <Grid item xs={8} md={4} style={{ textAlign: "center" }}>
             <Typography variant="h6">
               {matchInfo?.matchInfo?.seriesName}
             </Typography>
           </Grid>
-          <Grid item xs={4} style={{ textAlign: "end" }}>
+          <Grid item xs={4} md={4} style={{ textAlign: "end" }}>
             <Chip
               label={matchInfo?.matchInfo?.matchFormat}
               style={{
@@ -97,9 +97,9 @@ const MatchCard = ({ matchInfo, type }: any) => {
           </Grid>
 
           <Grid item xs={4}>
-            <Typography style={{ fontWeight: 600, color: "gray" }}>
+            {/* <Typography style={{ fontWeight: 600, color: "gray" }}>
               {matchInfo?.matchInfo?.status}
-            </Typography>
+            </Typography> */}
           </Grid>
 
           <Grid item xs={4} style={{ textAlign: "right" }}>
@@ -111,6 +111,12 @@ const MatchCard = ({ matchInfo, type }: any) => {
               {matchInfo?.matchScore?.team2Score?.inngs1?.runs}/
               {matchInfo?.matchScore?.team2Score?.inngs1?.wickets}
             </span>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography gutterBottom style={{ fontWeight: 600, color: "gray" }}>
+              {matchInfo?.matchInfo?.status}
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
