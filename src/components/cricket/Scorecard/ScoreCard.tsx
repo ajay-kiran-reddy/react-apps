@@ -1,36 +1,38 @@
-import React, { useState } from "react";
-import data from "../mock.json";
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-  Grid,
-  Box,
-  IconButton,
-  Tooltip,
-} from "@mui/material";
+import { useEffect, useState } from "react";
+import { Card, CardContent, Typography, Grid, Box } from "@mui/material";
 import { formatDateTime } from "../../../utils";
 import { GiWinterGloves } from "react-icons/gi";
 import { PiBaseballCapDuotone } from "react-icons/pi";
-import { useNavigate } from "react-router-dom";
-import SportsCricketIcon from "@mui/icons-material/SportsCricket";
+import { useNavigate, useParams } from "react-router-dom";
+import NavBar from "../NavBar";
+import { fetchData } from "../../../apiService/service";
+import { CRIC_API_END_POINTS } from "../constants";
+import Loader from "../Loader";
 
 const ScoreCard = () => {
-  const [scorecard, setScoreCard] = useState(data.scorecard);
+  const [scorecard, setScoreCard]: any = useState();
   const navigate = useNavigate();
+  const params = useParams();
+  const [isLoading, setIsLoading] = useState(false);
 
-  console.log(scorecard, "[score card]");
+  const getScoreCardInfo = async () => {
+    setIsLoading(true);
+    const data = await fetchData(
+      `${CRIC_API_END_POINTS.GET_SCORECARD}/${params.id}/scard`
+    );
+    setScoreCard(data);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    getScoreCardInfo();
+  }, []);
+
   return (
     <div>
+      <Loader show={isLoading} />
       <Grid item xs={12} style={{ textAlign: "left" }}>
-        <SportsCricketIcon
-          style={{ fontSize: 60, cursor: "pointer" }}
-          onClick={() => navigate("/cricket")}
-          color="primary"
-        />
+        <NavBar />
       </Grid>
       <Card>
         <CardContent>
@@ -60,7 +62,7 @@ const ScoreCard = () => {
               </Typography>
             </Grid>
 
-            {scorecard?.scoreCard.map((card, index) => {
+            {scorecard?.scoreCard.map((card: any, index: number) => {
               return (
                 <Grid
                   item
@@ -99,7 +101,7 @@ const ScoreCard = () => {
             </Grid>
 
             <Grid item xs={12} style={{ textAlign: "left" }}>
-              {scorecard?.scoreCard.map((card) => {
+              {scorecard?.scoreCard.map((card: any) => {
                 return (
                   <>
                     <Box mt={2}>

@@ -1,23 +1,59 @@
-import { Grid, Typography } from "@mui/material";
-import React, { useState } from "react";
-import data from "../mock.json";
+import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import PlayerStats from "./PlayerStats";
-import { useNavigate } from "react-router-dom";
-import SportsCricketIcon from "@mui/icons-material/SportsCricket";
+import NavBar from "../NavBar";
+import { useNavigate, useParams } from "react-router-dom";
+import { fetchData } from "../../../apiService/service";
+import { CRIC_API_END_POINTS } from "../constants";
+import { BiLeftArrow } from "react-icons/bi";
+import Loader from "../Loader";
 
 const PlayerInfo = () => {
-  const [playerInfo, setPlayerInfo] = useState(data.playerInfo);
+  const [playerInfo, setPlayerInfo]: any = useState();
+  const [batStats, setBatStats] = useState();
+  const [bowlStats, setBowlStats] = useState();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const params = useParams();
+
+  const getPlayerInfo = async () => {
+    setIsLoading(true);
+    const data = await fetchData(
+      `${CRIC_API_END_POINTS.GET_PLAYER_INFO}/${params.id}`
+    );
+    setPlayerInfo(data);
+
+    const batInfo = await fetchData(
+      `${CRIC_API_END_POINTS.GET_PLAYER_INFO}/${params.id}/batting`
+    );
+    setBatStats(batInfo);
+
+    const bowlInfo = await fetchData(
+      `${CRIC_API_END_POINTS.GET_PLAYER_INFO}/${params.id}/bowling`
+    );
+    setBowlStats(bowlInfo);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    getPlayerInfo();
+  }, []);
 
   return (
     <div>
+      <Loader show={isLoading} />
       <Grid item xs={12} style={{ textAlign: "left" }}>
-        <SportsCricketIcon
-          style={{ fontSize: 60, cursor: "pointer" }}
-          onClick={() => navigate("/cricket")}
-          color="primary"
-        />
+        <NavBar />
       </Grid>
+      <div style={{ textAlign: "left" }}>
+        <Tooltip title="Back">
+          <IconButton onClick={() => navigate(-1)}>
+            <BiLeftArrow color="#009270" />
+          </IconButton>
+        </Tooltip>
+      </div>
+
       <Grid container spacing={3}>
         <Grid item>
           <img src={playerInfo?.image} height="100px" width="100px" />
@@ -116,19 +152,19 @@ const PlayerInfo = () => {
 
             <Grid item xs={3} style={{ textAlign: "left" }}>
               <Typography variant="overline">
-                {playerInfo?.rankings?.bat[0]?.testRank || "--"}
+                {playerInfo?.rankings?.bat?.testRank || "--"}
               </Typography>
             </Grid>
 
             <Grid item xs={3} style={{ textAlign: "left" }}>
               <Typography variant="overline">
-                {playerInfo?.rankings?.bat[0]?.odiRank || "--"}
+                {playerInfo?.rankings?.bat?.odiRank || "--"}
               </Typography>
             </Grid>
 
             <Grid item xs={3} style={{ textAlign: "left" }}>
               <Typography variant="overline">
-                {playerInfo?.rankings?.bat[0]?.t20Rank || "--"}
+                {playerInfo?.rankings?.bat?.t20Rank || "--"}
               </Typography>
             </Grid>
 
@@ -137,24 +173,24 @@ const PlayerInfo = () => {
             </Grid>
 
             <Grid item xs={3} style={{ textAlign: "left" }}>
-              {playerInfo?.rankings?.bowl[0]?.testRank || "--"}
+              {playerInfo?.rankings?.bowl?.testRank || "--"}
             </Grid>
 
             <Grid item xs={3} style={{ textAlign: "left" }}>
-              {playerInfo?.rankings?.bowl[0]?.odiRank || "--"}
+              {playerInfo?.rankings?.bowl?.odiRank || "--"}
             </Grid>
 
             <Grid item xs={3} style={{ textAlign: "left" }}>
-              {playerInfo?.rankings?.bowl[0]?.t20Rank || "--"}
+              {playerInfo?.rankings?.bowl?.t20Rank || "--"}
             </Grid>
           </Grid>
         </Grid>
 
         <Grid item xs={12} md={8} style={{ textAlign: "left", paddingTop: 0 }}>
-          <PlayerStats />
+          <PlayerStats batStats={batStats} bowlStats={bowlStats} />
 
           <div style={{ marginTop: "1rem" }}>
-            {playerInfo?.bio.split("<br/><br/>").map((data) => {
+            {playerInfo?.bio?.split("<br/><br/>")?.map((data: any) => {
               return <Typography gutterBottom>{data}</Typography>;
             })}
           </div>

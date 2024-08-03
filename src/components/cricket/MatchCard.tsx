@@ -108,7 +108,7 @@ const MatchCard = ({ matchInfo, type }: any) => {
             </span>
 
             <span style={{ fontWeight: 600 }}>
-              {matchInfo?.matchScore.team2Score.inngs1?.runs}/
+              {matchInfo?.matchScore?.team2Score?.inngs1?.runs}/
               {matchInfo?.matchScore?.team2Score?.inngs1?.wickets}
             </span>
           </Grid>

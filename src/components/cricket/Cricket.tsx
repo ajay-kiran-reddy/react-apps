@@ -4,41 +4,36 @@ import {
   AccordionSummary,
   Chip,
   Grid,
-  IconButton,
-  Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchData } from "../../apiService/service";
 import { CRIC_API_END_POINTS } from "./constants";
-import data from "./mock.json";
 import { getChipByCat } from "./utils";
 import MatchesCarousel from "./CarouselCard";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import SportsCricketIcon from "@mui/icons-material/SportsCricket";
-import { useNavigate } from "react-router-dom";
+import NavBar from "./NavBar";
+import Loader from "./Loader";
 
 const Cricket = () => {
   const [matches, setMatches]: any = useState([]);
-  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const getMatchesList = async () => {
-    // const data = await fetchData(CRIC_API_END_POINTS.RECENT_MATCHES);
-    setMatches(data.recent);
+    setIsLoading(true);
+    const data = await fetchData(CRIC_API_END_POINTS.RECENT_MATCHES);
+    setMatches(data);
+    setIsLoading(false);
   };
 
   useEffect(() => {
     getMatchesList();
   }, []);
 
-  console.log(matches, "[matches]");
   return (
     <Grid container>
+      <Loader show={isLoading} />
       <Grid item xs={12} style={{ textAlign: "left" }}>
-        <SportsCricketIcon
-          style={{ fontSize: 60, cursor: "pointer" }}
-          onClick={() => navigate("/cricket")}
-          color="primary"
-        />
+        <NavBar />
       </Grid>
 
       <Grid item xs={12}>
