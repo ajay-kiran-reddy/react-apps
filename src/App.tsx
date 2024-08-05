@@ -9,8 +9,8 @@ import Stopwatch from "./components/stopwatch/Stopwatch";
 import FileExplorer from "./components/fileExplorer/FileExplorer";
 import Comments from "./components/nestedComments/Comments";
 import Cricket from "./components/cricket/Cricket";
-import ScoreCard from "./components/cricket/Scorecard/ScoreCard";
 import PlayerInfo from "./components/cricket/PlayerInfo/PlayerInfo";
+import MatchDetailsTabs from "./components/cricket/MatchDetails/MatchDetailsTabs";
 
 const router = createBrowserRouter([
   {
@@ -50,11 +50,11 @@ const router = createBrowserRouter([
     element: <Cricket />,
   },
   {
-    path: "/cricScore/scorecard/:id",
-    element: <ScoreCard />,
+    path: "/cricket/scorecard/:id/:team1Name/:team1Id/:team2Name/:team2Id",
+    element: <MatchDetailsTabs />,
   },
   {
-    path: "/cricScore/player/:id",
+    path: "/cricket/player/:id",
     element: <PlayerInfo />,
   },
 ]);

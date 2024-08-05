@@ -19,7 +19,9 @@ const MatchCard = ({ matchInfo, type }: any) => {
         padding: "0 1rem",
       }}
       onClick={() =>
-        naviagte(`/cricScore/scorecard/${matchInfo?.matchInfo?.matchId}`)
+        naviagte(
+          `/cricket/scorecard/${matchInfo?.matchInfo?.matchId}/${matchInfo?.matchInfo?.team1?.teamName}/${matchInfo?.matchInfo?.team1?.teamId}/${matchInfo?.matchInfo?.team2?.teamName}/${matchInfo?.matchInfo?.team2?.teamId}`
+        )
       }
     >
       <div
@@ -54,7 +56,7 @@ const MatchCard = ({ matchInfo, type }: any) => {
               height={"50px"}
               width={"50px"}
               src={
-                data.countries.find((cou) =>
+                data?.find((cou) =>
                   matchInfo?.matchInfo?.team1?.teamName?.includes(cou.name)
                 )?.image || image
               }
@@ -88,7 +90,7 @@ const MatchCard = ({ matchInfo, type }: any) => {
               height={"50px"}
               width={"50px"}
               src={
-                data.countries.find((cou) =>
+                data.find((cou) =>
                   matchInfo?.matchInfo?.team2?.teamName.includes(cou.name)
                 )?.image || image
               }

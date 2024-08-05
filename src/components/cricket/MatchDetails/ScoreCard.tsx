@@ -196,7 +196,7 @@ const ScoreCard = () => {
                                         }}
                                         onClick={() =>
                                           navigate(
-                                            `/cricScore/player/${card?.batTeamDetails?.batsmenData[key]?.batId}`
+                                            `/cricket/player/${card?.batTeamDetails?.batsmenData[key]?.batId}`
                                           )
                                         }
                                       >
@@ -330,7 +330,7 @@ const ScoreCard = () => {
                                   }}
                                   onClick={() =>
                                     navigate(
-                                      `/cricScore/player/${card?.bowlTeamDetails?.bowlersData[key]?.bowlerId}`
+                                      `/cricket/player/${card?.bowlTeamDetails?.bowlersData[key]?.bowlerId}`
                                     )
                                   }
                                 >

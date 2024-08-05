@@ -28,4 +28,19 @@ const getBackgroundColorByType = (cat: string) => {
   } else return "#f7d7ea";
 };
 
-export { getChipByCat, getChipByFormat, getBackgroundColorByType };
+const getBadgeThemeByEvent = (event: string) => {
+  if (event === "FOUR") {
+    return "info";
+  } else if (event === "SIX") {
+    return "success";
+  } else if (event === "WICKET") {
+    return "error";
+  } else return "default";
+};
+
+export {
+  getChipByCat,
+  getChipByFormat,
+  getBackgroundColorByType,
+  getBadgeThemeByEvent,
+};
