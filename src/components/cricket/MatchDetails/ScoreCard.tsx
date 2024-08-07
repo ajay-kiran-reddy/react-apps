@@ -48,7 +48,7 @@ const ScoreCard = () => {
                 color="text.secondary"
                 style={{ textAlign: "left" }}
               >
-                Series : {scorecard?.matchHeader.seriesName}
+                Series : {scorecard?.matchHeader?.seriesName}
               </Typography>
             </Grid>
             <Grid item xs={12} md={8}>
@@ -62,7 +62,7 @@ const ScoreCard = () => {
               </Typography>
             </Grid>
 
-            {scorecard?.scoreCard.map((card: any, index: number) => {
+            {scorecard?.scoreCard?.map((card: any, index: number) => {
               return (
                 <Grid
                   item
@@ -73,8 +73,9 @@ const ScoreCard = () => {
                     textAlign: "left",
                   }}
                 >
-                  {card.batTeamDetails.batTeamShortName}{" "}
-                  {card.scoreDetails.runs} / {card?.scoreDetails?.wickets} {""}
+                  {card?.batTeamDetails?.batTeamShortName}{" "}
+                  {card?.scoreDetails?.runs} / {card?.scoreDetails?.wickets}{" "}
+                  {""}
                   {card?.scoreDetails?.overs}
                 </Grid>
               );
@@ -101,7 +102,7 @@ const ScoreCard = () => {
             </Grid>
 
             <Grid item xs={12} style={{ textAlign: "left" }}>
-              {scorecard?.scoreCard.map((card: any) => {
+              {scorecard?.scoreCard?.map((card: any) => {
                 return (
                   <>
                     <Box mt={2}>
@@ -127,7 +128,7 @@ const ScoreCard = () => {
                               padding: "5px",
                             }}
                           >
-                            {card.batTeamDetails.batTeamName} Innings
+                            {card?.batTeamDetails?.batTeamName} Innings
                           </Typography>
                         </Grid>
                         <Grid
