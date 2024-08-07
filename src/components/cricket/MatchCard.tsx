@@ -8,6 +8,13 @@ import { useNavigate } from "react-router-dom";
 const MatchCard = ({ matchInfo, type }: any) => {
   const naviagte = useNavigate();
 
+  const handleMatchCardClcik = () => {
+    console.log("clicking match card", matchInfo);
+    naviagte(
+      `/cricket/scorecard/${matchInfo?.matchInfo?.matchId}/${matchInfo?.matchInfo?.team1?.teamName}/${matchInfo?.matchInfo?.team1?.teamId}/${matchInfo?.matchInfo?.team2?.teamName}/${matchInfo?.matchInfo?.team2?.teamId}/${matchInfo?.matchInfo?.seriesId}`
+    );
+  };
+
   return (
     <Grid
       container
@@ -18,11 +25,7 @@ const MatchCard = ({ matchInfo, type }: any) => {
         backgroundColor: getBackgroundColorByType(type),
         padding: "0 1rem",
       }}
-      onClick={() =>
-        naviagte(
-          `/cricket/scorecard/${matchInfo?.matchInfo?.matchId}/${matchInfo?.matchInfo?.team1?.teamName}/${matchInfo?.matchInfo?.team1?.teamId}/${matchInfo?.matchInfo?.team2?.teamName}/${matchInfo?.matchInfo?.team2?.teamId}`
-        )
-      }
+      onClick={handleMatchCardClcik}
     >
       <div
         style={{ width: "100%", backgroundColor: "#fff", height: "2px" }}
@@ -57,7 +60,9 @@ const MatchCard = ({ matchInfo, type }: any) => {
               width={"50px"}
               src={
                 data?.find((cou) =>
-                  matchInfo?.matchInfo?.team1?.teamName?.includes(cou.name)
+                  matchInfo?.matchInfo?.team1?.teamName
+                    ?.toLowerCase()
+                    ?.includes(cou.name.toLowerCase())
                 )?.image || image
               }
             />
@@ -91,7 +96,9 @@ const MatchCard = ({ matchInfo, type }: any) => {
               width={"50px"}
               src={
                 data.find((cou) =>
-                  matchInfo?.matchInfo?.team2?.teamName.includes(cou.name)
+                  matchInfo?.matchInfo?.team2?.teamName
+                    ?.toLowerCase()
+                    ?.includes(cou.name?.toLowerCase())
                 )?.image || image
               }
             />

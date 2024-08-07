@@ -5,6 +5,7 @@ const CRIC_API_END_POINTS = {
   GET_SCORECARD: "https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1",
   GET_PLAYER_INFO: "https://cricbuzz-cricket.p.rapidapi.com/stats/v1/player",
   GET_TEAM_INFO: "https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1",
+  GET_SERIES_INFO: "https://cricbuzz-cricket.p.rapidapi.com/series/v1",
 };
 
 export { CRIC_API_END_POINTS };

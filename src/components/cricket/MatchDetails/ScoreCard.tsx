@@ -4,7 +4,6 @@ import { formatDateTime } from "../../../utils";
 import { GiWinterGloves } from "react-icons/gi";
 import { PiBaseballCapDuotone } from "react-icons/pi";
 import { useNavigate, useParams } from "react-router-dom";
-import NavBar from "../NavBar";
 import { fetchData } from "../../../apiService/service";
 import { CRIC_API_END_POINTS } from "../constants";
 import Loader from "../Loader";
@@ -31,9 +30,7 @@ const ScoreCard = () => {
   return (
     <div>
       <Loader show={isLoading} />
-      <Grid item xs={12} style={{ textAlign: "left" }}>
-        <NavBar />
-      </Grid>
+
       <Card>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

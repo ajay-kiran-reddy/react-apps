@@ -86,7 +86,7 @@ const Home = () => {
 
   return (
     <div>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} style={{ paddingLeft: 0, paddingRight: 0 }}>
         {CardsContent.map((card) => {
           return (
             <Grid item lg={3} md={4} sm={6} xs={12}>

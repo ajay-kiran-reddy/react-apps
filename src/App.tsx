@@ -50,7 +50,7 @@ const router = createBrowserRouter([
     element: <Cricket />,
   },
   {
-    path: "/cricket/scorecard/:id/:team1Name/:team1Id/:team2Name/:team2Id",
+    path: "/cricket/scorecard/:id/:team1Name/:team1Id/:team2Name/:team2Id/:seriesId",
     element: <MatchDetailsTabs />,
   },
   {

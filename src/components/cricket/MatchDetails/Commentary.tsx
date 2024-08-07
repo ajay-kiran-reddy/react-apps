@@ -32,32 +32,6 @@ const Commentary = () => {
       {commentary?.commentaryList?.map((com: any, i: number) => {
         return (
           <Grid key={i} container spacing={2}>
-            <Grid item xs={2}>
-              <Badge
-                color={getBadgeThemeByEvent(com.event)}
-                badgeContent={com.overNumber}
-              ></Badge>
-            </Grid>
-            <Grid item xs={10} style={{ textAlign: "left" }}>
-              <Typography
-                gutterBottom
-                style={{ fontWeight: i === 0 ? 600 : 500 }}
-                color={i === 0 ? "primary" : ""}
-              >
-                {com?.commText
-                  .replace(
-                    com?.commentaryFormats?.bold?.formatId &&
-                      com?.commentaryFormats?.bold?.formatId[0],
-                    com?.commentaryFormats?.bold?.formatValue &&
-                      com?.commentaryFormats?.bold?.formatValue[0]
-                  )
-                  .replace(
-                    com?.commentaryFormats?.bold?.formatId[1],
-                    com?.commentaryFormats?.bold?.formatValue[1]
-                  )}
-              </Typography>
-            </Grid>
-
             {com?.overSeparator && (
               <Grid
                 item
@@ -136,6 +110,35 @@ const Commentary = () => {
                 </Grid>
               </Grid>
             )}
+            <Grid item xs={2}>
+              <Badge
+                color={getBadgeThemeByEvent(com.event)}
+                badgeContent={com.overNumber}
+              ></Badge>
+            </Grid>
+            <Grid
+              item
+              xs={10}
+              style={{ textAlign: "left", marginBottom: "0.5rem" }}
+            >
+              <Typography
+                gutterBottom
+                style={{ fontWeight: i === 0 ? 600 : 500 }}
+                color={i === 0 ? "primary" : ""}
+              >
+                {com?.commText
+                  .replace(
+                    com?.commentaryFormats?.bold?.formatId &&
+                      com?.commentaryFormats?.bold?.formatId[0],
+                    com?.commentaryFormats?.bold?.formatValue &&
+                      com?.commentaryFormats?.bold?.formatValue[0]
+                  )
+                  .replace(
+                    com?.commentaryFormats?.bold?.formatId[1],
+                    com?.commentaryFormats?.bold?.formatValue[1]
+                  )}
+              </Typography>
+            </Grid>
           </Grid>
         );
       })}

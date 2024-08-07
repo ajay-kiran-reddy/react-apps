@@ -8,6 +8,7 @@ import Commentary from "./Commentary";
 import ScoreCard from "./ScoreCard";
 import Sqauds from "./Sqauds";
 import SeriesPage from "./SeriesPage";
+import { useParams } from "react-router-dom";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -26,7 +27,7 @@ function CustomTabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box sx={{ p: 0 }}>{children}</Box>}
     </div>
   );
 }
@@ -46,6 +47,12 @@ export default function MatchDetailsTabs() {
     setValue(newValue);
   };
 
+  const params = useParams();
+
+  React.useEffect(() => {
+    setValue(0);
+  }, [params]);
+
   return (
     <Box sx={{ width: "100%" }}>
       <Grid item xs={12} style={{ textAlign: "left" }}>
@@ -59,8 +66,8 @@ export default function MatchDetailsTabs() {
         >
           <Tab label="Commentary" {...a11yProps(0)} />
           <Tab label=" Score Card" {...a11yProps(1)} />
-          <Tab label="Squads" {...a11yProps(2)} />
           <Tab label="Series Page" {...a11yProps(2)} />
+          <Tab label="Squads" {...a11yProps(3)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -70,10 +77,10 @@ export default function MatchDetailsTabs() {
         <ScoreCard />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <Sqauds />
+        <SeriesPage />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        <SeriesPage />
+        <Sqauds />
       </CustomTabPanel>
     </Box>
   );
